@@ -1,0 +1,81 @@
+#+TITLE: Yisan
+
+* Commander (1)
+- Yisan, the Wanderer Bard
+* Creatures (34)
+- Scavenging Ooze
+- Priest of Titania
+- Soul of the Harvest
+- Llanowar Scout
+- Reclamation Sage
+- Wirewood Symbiote
+- Elvish Visionary
+- Woodland Bellower
+- Beast Whisperer
+- Scryb Ranger
+- Elvish Mystic
+- Quirion Ranger
+- Prowling Serpopard
+- Llanowar Elves
+- End-Raze Forerunners
+- Karametra's Acolyte
+- Arbor Elf
+- Seedborn Muse
+- Great Oak Guardian
+- Craterhoof Behemoth
+- Bane of Progress
+- Silklash Spider
+- Voyaging Satyr
+- Wayward Swordtooth
+- Acidic Slime
+- Eternal Witness
+- Caustic Caterpillar
+- Woodfall Primus
+- Biogenic Ooze
+- Solemn Simulacrum
+- Hua Tuo, honored Physician
+- Temur Sabertooth
+- Sakura-Tribe Scout
+- Regal Force
+* Instants (7)
+- Worldly Tutor
+- Krosan Grip
+- Relic Crush
+- Beast Within
+- Summoner's Pact
+- Plummet
+- Autumn's Veil
+* Sorceries (10)
+- Explosive Vegetation
+- Creeping Corrosion
+- Praetor's Counsel
+- Kodama's Reach
+- Creeping Renaissance
+- Gaea's Blessing
+- Green Sun's Zenith
+- Bramblecrush
+- Temp with Discovery
+- Skyshroud Claim
+* Artifacts (7)
+- Sensei's Divining Top
+- Slate of Ancestry
+- Thousand-Year Elixir
+- Skullclamp
+- Sol Ring
+- Lightning Greaves
+- Swiftfoot Boots
+* Enchantment (8)
+- Asceticism
+- GuProject
+- Mirri's Guile
+- Lignify
+- Beastmaster Ascension
+- Curse of Bounty
+- Harrow
+- Elemental Bond
+* Planeswalkers (0)
+* Lands (33)
+- Forest (30)
+- Reliquary Tower
+- Temple of the False God
+- Nykthos, Shrine to Nyx
