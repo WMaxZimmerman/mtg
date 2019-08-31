@@ -1,0 +1,87 @@
+#+TITLE: Yawgmoth
+
+* Commander (1)
+- Yawgmoth, Thran Physician
+* Creatures (35)
+- Mikaeus, the Unhallowed
+- Run-Scarred Demon
+- Butcher of Malakir
+- Ichor Rats
+- Bloodline Necromancer
+- Puppeteer Clique
+- Magus of the Coffers
+- Archfiend of Ifnir
+- Priest of the Forgotten Gods
+- Phyrexian Delver
+- Abhorrent Overlord
+- Stitcher's Supplier
+- Smothering Abomination
+- Whisper, Blood Liturgist
+- Sifter of Skulls
+- Falkenrath Noble
+- Magus of the Abyss
+- Butcher Ghoul
+- Tenacious Dead
+- Pitiless Plunderer
+- Gray Merchant of Asphodel
+- Viscera Seer
+- Ogre Slumlord
+- Ophiomancer
+- Noosegraf Mob
+- Reassembling Skeleton
+- Pawn of Ulamog
+- Endrek Sahr, Master Breeder
+- Vindictive Vampire
+- Blood Artist
+- Harvester of Souls
+- Deathgreeter
+- Zulaport Cutthroat
+- K'rrik, Son of Yawgmoth
+- Ravenous Chupacabra
+* Instants (2)
+- Sudden Spoiling
+- Go for the Throat
+* Sorceries (7)
+- Diabolic Intent
+- Buried Alive
+- Decree of Pain
+- Diabolic Tutor
+- Final Parting
+- Call to the Netherworld
+- Yawgmoth's Vile Offering
+* Artifacts (8)
+- Darksteel Ingot
+- Ashnod's Altar
+- Phyrexian Altar
+- Desecrated Tomb
+- Elixir of Immortality
+- Skullclamp
+- Sol Ring
+- Illusionist's Bracers
+* Enchantments (10)
+- Phyrexian Arena
+- Grave Pact
+- Attrition
+- Phyrexian Reclamation
+- Animate Dead
+- Black Market
+- Grave Betrayal
+- Nest of Scarabs
+- Dictate of Erebos
+- Open the Graves
+* Planeswalkers (1)
+- Liliana Vess
+* Lands (36)
+- Swamp (24)
+- Cabal Stronhold
+- Cabal Coffers
+- Temple of the False God
+- Terramorphic Expanse
+- Phyrexian Tower
+- Nykthos, Shrine to Nyx
+- Zhalfirin Void
+- Tectonic Edge
+- Urborg, Tomb of Yawgmoth
+- Bojuka Bog
+- Evolving Wilds
+- Miren, the Moaning Well
