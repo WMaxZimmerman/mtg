@@ -1,0 +1,78 @@
+#+TITLE: Sea God's Wrath
+
+* Commander (1)
+- Thassa, God of the Sea
+* Creatures (44)
+- Reef Shaman
+- Coralhelm Commander
+- Kopala, Warden of Waves
+- Grimoire Thief
+- Augur of Bolas
+- Seafloor Oracle
+- Riverwise Augur
+- Benthicore
+- Master of the Pearl Trident
+- Sage of Fables
+- Master of Waves
+- Seahunter
+- Tidebender Mage
+- Merrow Reejerey
+- Rootwater Thief
+- Merfolk Soverign
+- Stonybrook Banneret
+- Tempest Caller
+- Deep-Sea Kraken
+- True-Name Nemesis
+- Enclave Cryptologist
+- Merrow Harbinger
+- Surgespanner
+- Silvergill Adept
+- Wake Thrasher
+- Wanderwine Prophets
+- Seasinger
+- Thada Adel, Acquisitor
+- harbinger of the Tides
+- Stormtide Leviathan
+- Streambed Aquitects
+- Azami, Lady of Scrolls
+- Lorthos, the Tidemaker
+- River Sneak
+- Razorfin Abolisher
+- Colossal Whale
+- Sigil Tracer
+- Cosi's Trickster
+- Lullmage Mentor
+- Shipbreaker Kraken
+- Inkwell Leviathan
+- Lord of Atlantis
+- Empress Galina
+- Deepchannel Mentor
+* Instants (3)
+- Blue Sun's Zenith
+- Sages Dousing
+- Cyclonic Rift
+* Sorceries (3)
+- Stolen Identity
+- Curse of the Swine
+- Aquitect's Will
+* Artifacts (6)
+- Sword of the Animist
+- Sol Ring
+- Caged Sun
+- Quicksilver Fountain
+- Gilded Lotus
+- Vanquisher's Banner
+* Enchantments (7)
+- Spreading Seas
+- Quest for Ula's Temple
+- Leyline of Anticipation
+- Phystic Study
+- Bident of Thassa
+- Merrow Commerce
+- Kindred Discovery
+* Planeswalkers (0)
+* Lands (36)
+- Island (33)
+- Reliquary Tower
+- Nykthos, Shrine to Nyx
+- Temple of the False God
