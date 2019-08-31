@@ -1,0 +1,79 @@
+#+TITLE: Coin Flip
+
+* Commander
+- Okaun, Eye of Chaos
+- Zndrsplt, Eye of Wisdom
+* Creatures
+- Mogg Assassin
+- Scoria Wurm
+- Solemn Simulacrum
+- Frenetic Sliver
+- Frenetic Efreet
+- Psychosis Crawler
+- Skyclaw Thrash
+- Goblin Artisans
+- Niv-Mizzet, Parun
+- Goblin Psychopath
+- Karplusaan Minotaur
+- Wild Wurm
+- Viashino Sandswimmer
+- Chaotic Goo
+- Mijae Djinn
+- Goblin Archaeologist
+- Laboratory Maniac
+- Goblin Kaboomist
+- Goblin Bangchuckers
+- Fickle Efreet
+- Creepy Doll
+- Crazed Firecat
+- Orcish Captain
+* Instants
+- Cyclonic Rift
+- Puppet's Verdict
+- Chaotic Strike
+- Unwind
+- Izzet Charm
+- Aleatory
+- Desperate Gambit
+* Sorceries
+- Molten Birth
+- Game of Chaos
+- Winter Sky
+- Fiery Gambit
+- Stitch in Time
+- Squee's Revenge
+- Curse of the Swine
+* Enchantments
+- Mirror March
+- Propaganda
+- Time of Ice
+- Chance Encounter
+- Risky Move
+- Planar Chaos
+- Tide of War
+- Goblin Kites
+- Goblin Festival
+- Goblin Bomb
+- Impulsive Maneuvers
+* Artifacts
+- Thought Vessel
+- Sorcerer's Strongbox
+- Boompile
+- Wirefly Hive
+- Mana Crypt
+- Whispersilk Cloak
+- Sword of Vengeance
+- Izzet Signet
+- Sol Ring
+- Bottle of Suleiman
+- Crooked Scales
+- Krark's Thumb
+- Volatile Rig
+* Planeswalkers
+* Lands
+- Island (15)
+- Mountain (17)
+- Rogue's Passage
+- Command Tower
+- Izzet Boilerworks
+- Reliquary Tower
