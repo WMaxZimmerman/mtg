@@ -1,9 +1,9 @@
 #+TITLE: Coin Flip
 
-* Commander
+* Commander (2)
 - Okaun, Eye of Chaos
 - Zndrsplt, Eye of Wisdom
-* Creatures
+* Creatures (23)
 - Mogg Assassin
 - Scoria Wurm
 - Solemn Simulacrum
@@ -27,7 +27,7 @@
 - Creepy Doll
 - Crazed Firecat
 - Orcish Captain
-* Instants
+* Instants (7)
 - Cyclonic Rift
 - Puppet's Verdict
 - Chaotic Strike
@@ -35,7 +35,7 @@
 - Izzet Charm
 - Aleatory
 - Desperate Gambit
-* Sorceries
+* Sorceries (7)
 - Molten Birth
 - Game of Chaos
 - Winter Sky
@@ -43,7 +43,7 @@
 - Stitch in Time
 - Squee's Revenge
 - Curse of the Swine
-* Enchantments
+* Enchantments (11)
 - Mirror March
 - Propaganda
 - Time of Ice
@@ -55,7 +55,7 @@
 - Goblin Festival
 - Goblin Bomb
 - Impulsive Maneuvers
-* Artifacts
+* Artifacts (13)
 - Thought Vessel
 - Sorcerer's Strongbox
 - Boompile
@@ -69,8 +69,8 @@
 - Crooked Scales
 - Krark's Thumb
 - Volatile Rig
-* Planeswalkers
-* Lands
+* Planeswalkers (0)
+* Lands (36)
 - Island (15)
 - Mountain (17)
 - Rogue's Passage
