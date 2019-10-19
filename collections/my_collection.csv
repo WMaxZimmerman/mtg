@@ -1,71 +1,268 @@
-1|Acidic Slime
-1|Arbor Elf
-1|Asceticism
-1|Autumn's Veil
-1|Bane of Progress
-1|Beast Whisperer
-1|Beast Within
-1|Beastmaster Ascension
-1|Biogenic Ooze
-1|Bramblecrush
-1|Caustic Caterpillar
-1|Craterhoof Behemoth
-1|Creeping Corrosion
-1|Creeping Renaissance
-1|Curse of Bounty
-1|Elemental Bond
-1|Elvish Mystic
-1|Elvish Visionary
-1|End-Raze Forerunners
-1|Eternal Witness
-1|Explosive Vegetation
-1|Gaea's Blessing
-1|Great Oak Guardian
-1|Green Sun's Zenith
-1|GuProject
-1|Harrow
-1|Hua Tuo, honored Physician
-1|Karametra's Acolyte
-1|Kodama's Reach
-1|Krosan Grip
-1|Lightning Greaves
-1|Lignify
-1|Llanowar Elves
-1|Llanowar Scout
-1|Mirri's Guile
-1|Nykthos, Shrine to Nyx
-1|Plummet
-1|Praetor's Counsel
-1|Priest of Titania
-1|Prowling Serpopard
-1|Quirion Ranger
-1|Reclamation Sage
-1|Regal Force
-1|Relic Crush
-1|Reliquary Tower
-1|Sakura-Tribe Scout
-1|Scavenging Ooze
-1|Scryb Ranger
-1|Seedborn Muse
-1|Sensei's Divining Top
-1|Silklash Spider
-1|Skullclamp
-1|Skyshroud Claim
-1|Slate of Ancestry
-1|Sol Ring
-1|Solemn Simulacrum
-1|Soul of the Harvest
-1|Summoner's Pact
-1|Swiftfoot Boots
-1|Temp with Discovery
-1|Temple of the False God
-1|Temur Sabertooth
-1|Thousand-Year Elixir
-1|Voyaging Satyr
-1|Wayward Swordtooth
-1|Wirewood Symbiote
-1|Woodfall Primus
-1|Woodland Bellower
-1|Worldly Tutor
-1|Yisan, the Wanderer Bard
-30|Forest
+01|Abattoir Ghoul
+01|Abbey Griffin
+01|Absorb Vis
+01|Abzan Kin-Guard
+01|Academy Raider
+01|Act of Authority
+01|Act on Impulse
+01|Adeliz, the Cinder Wind
+01|Admiral Beckett Brass
+01|Adriana, Captain of the Guard
+01|Aerial Engineer
+01|Aether Tunnel
+01|Aetherflux Reservoir
+01|Aetherspouts
+01|Affa Protector
+01|Aggressive Urge
+01|Agony Warp
+01|Ahn-Crop Crasher
+01|Aim High
+01|Ainok Guide
+01|Ajani's Welcome
+01|Akoum Battlesinger
+01|Akoum Boulderfoot
+01|Akrasan Squire
+01|Alesha, Who Smiles at Death
+01|Algae Gharial
+01|Altac Bloodseeker
+01|Altar of Dementia
+01|Ambition's Cost
+01|Ambuscade
+01|Amphin Cutthroat
+01|Amplifire
+01|Amrou Scout
+01|Amulet of Safekeeping
+01|Anaba Ancestor
+01|Anaba Spirit Crafter
+01|Ancient Silverback
+01|Angel of Glory's Rise
+01|Angel of Retribution
+01|Angel of the Dawn
+01|Angel's Herald
+01|Angelic Armaments
+01|Angelic Benediction
+01|Angelic Chorus
+01|Angelic Exaltation
+01|Angelic Wall
+01|Angrath's Fury
+01|Annihilate
+01|Anowon, the Ruin Sage
+01|Anthem of Rakdos
+01|Anvilwrought Raptor
+01|Aphetto Dredging
+01|Apocalypse Hydra
+01|Appetite for Brains
+01|Apprentice Necromancer
+01|Aquus Steed
+01|Arachnus Web
+01|Arashin Cleric
+01|Arbiter of the Ideal
+01|Arcane Melee
+01|Arcanis the Omnipotent
+01|Archangel Avacyn
+01|Archetype of Aggression
+01|Archetype of Endurance
+01|Archetype of Imagination
+01|Architects of Will
+01|Archon of Valor's Reach
+01|Ardent Recruit
+01|Argentum Armor
+01|Arguel's Blood Fast
+01|Armada Wurm
+01|Armament of Nyx
+01|Armory of Iroas
+01|Arterial Flow
+01|Artful Dodge
+01|Artful Takedown
+01|Artisan's Sorrow
+01|Aryel, Knight of Windgrace
+01|Asceticism
+01|Ashiok's Adept
+01|Ashnod's Transmogrant
+01|Atzocan Archer
+01|Audacious Infiltrator
+01|Aura Shards
+01|Avacyn's Collar
+01|Aven Fleetwing
+01|Aven Surveyor
+01|Aven of Enduring Hope
+01|Awakened Amalgam
+01|Awakener Druid
+01|Azami, Lady of Scrolls
+01|Azorius Charm
+01|Azorius Herald
+01|Azorius Keyrune
+01|Azra Oddsmaker
+01|Bane of Progress
+01|Beast Whisperer
+01|Beast Within
+01|Beastmaster Ascension
+01|Biogenic Ooze
+01|Bramblecrush
+01|Caustic Caterpillar
+01|Craterhoof Behemoth
+01|Creeping Corrosion
+01|Creeping Renaissance
+01|Curse of Bounty
+01|Elemental Bond
+01|Elvish Mystic
+01|Elvish Visionary
+01|End-Raze Forerunners
+01|Eternal Witness
+01|Explosive Vegetation
+01|Gaea's Blessing
+01|Great Oak Guardian
+01|Green Sun's Zenith
+01|GuProject
+01|Harrow
+01|Hua Tuo, honored Physician
+01|Karametra's Acolyte
+01|Kodama's Reach
+01|Krosan Grip
+01|Lightning Greaves
+01|Lignify
+01|Llanowar Elves
+01|Llanowar Scout
+01|Mirri's Guile
+01|Nykthos, Shrine to Nyx
+01|Plummet
+01|Praetor's Counsel
+01|Priest of Titania
+01|Prowling Serpopard
+01|Quirion Ranger
+01|Reclamation Sage
+01|Regal Force
+01|Relic Crush
+01|Reliquary Tower
+01|Sakura-Tribe Scout
+01|Scavenging Ooze
+01|Scryb Ranger
+01|Seedborn Muse
+01|Sensei's Divining Top
+01|Silklash Spider
+01|Skullclamp
+01|Skyshroud Claim
+01|Slate of Ancestry
+01|Sol Ring
+01|Solemn Simulacrum
+01|Soul of the Harvest
+01|Summoner's Pact
+01|Swiftfoot Boots
+01|Temp with Discovery
+01|Temple of the False God
+01|Temur Sabertooth
+01|The Antiquities War
+01|Thousand-Year Elixir
+01|Voyaging Satyr
+01|Wayward Swordtooth
+01|Wirewood Symbiote
+01|Woodfall Primus
+01|Woodland Bellower
+01|Worldly Tutor
+01|Yisan, the Wanderer Bard
+02|Absorb
+02|Abzan Advantage
+02|Abzan Runemark
+02|Acolyte's Reward
+02|Adanto Vanguard
+02|Aerial Maneuver
+02|Aerial Predation
+02|Aerie Worshippers
+02|Affa Guard Hound
+02|Akroan Conscriptor
+02|Anathemancer
+02|Anax and Cymede
+02|Ancient Brontodon
+02|Angel's Feather
+02|Angel's Tomb
+02|Angelic Edict
+02|Aqueous Form
+02|Arcane Denial
+02|Archaeomancer
+02|Archweaver
+02|Armored Ascension
+02|Asphodel Wanderer
+02|Assassin's Strike
+02|Auramancer
+02|Avenging Arrow
+02|Aviation Pioneer
+02|Azorius Arrester
+02|Azorius Skyguard
+02|Azure Drake
+030|Forest
+03|Accursed Spirit
+03|Adament Will
+03|Aeronaut Tinkerer
+03|Aether Adept
+03|Agent of Horizons
+03|Air Elemental
+03|Ajani's Mantra
+03|Ajani's Sunstriker
+03|Akroan Hoplite
+03|Akroan Phalanx
+03|Akroan Skyguard
+03|Alpha Authority
+03|Altar's Reap
+03|Amaranthine Wall
+03|Angel's Mercy
+03|Angrath's Ambusher
+03|Anointed Deacon
+03|Aquatic Incursion
+03|Arbor Elf
+03|Archetype of Courage
+03|Archway Angel
+03|Arena Athlete
+03|Arrester's Zeal
+03|Arrow Volley Trap
+03|Artificer's Assistant
+03|Arvad the Cursed
+03|Auger Spree
+03|Augury Owl
+03|Autumn's Veil
+03|Avacyn's Pilgrim
+03|Avent Sentry
+03|Azorius Cluestone
+03|Azra Bladeseeker
+04|Academy Drake
+04|Acidic Slime
+04|Adaptive Snapjaw
+04|Aesthir Glider
+04|Amass the Components
+04|Amphin Pathmage
+04|Ancient Grudge
+04|Angelic Gift
+04|Angelsong
+04|Annul
+04|Arbor Armament
+04|Arc Runner
+04|Ardent Plea
+04|Armillary Sphere
+04|Armored Cancrix
+04|Armored Wolf-Rider
+04|Arrester's Admonition
+04|Asphyxiate
+04|Aurora Champion
+04|Aven Squire
+05|Aeromunculus
+05|Air Servant
+05|Ajani's Pridemate
+05|Alchemist's Apprentice
+05|Applied Biomancy
+05|Axebane Stag
+05|Azorius Knight-Arbiter
+06|Adventuring Gear
+06|Arcane Flight
+06|Architects of Will
+06|Armored Transport
+06|Armory Guard
+06|Aspect of Hydra
+06|Azorius Locket
+07|Academy Journeymage
+07|Adventurous Impulse
+07|Aether Figment
+07|Assassinate
+08|Ancient Animus
+09|Aether Tradewinds
+10|Arsenal Thresher
+13|Act of Treason
+16|Assault Griffin
