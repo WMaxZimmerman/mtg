@@ -1,5 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BigDeckPlays.DAL.Repositories;
+using repos = BigDeckPlays.DAL.Repositories;
 
 namespace BigDeckPlays.Tests.DAL.Repositories.ScryfallRepository
 {
@@ -12,7 +12,7 @@ namespace BigDeckPlays.Tests.DAL.Repositories.ScryfallRepository
         public override void Init()
         {
             base.Init();
-            _baseUrl = $"{ScryfallRepository.HostUrl}cards/named?fuzzy=";
+            _baseUrl = $"{repos.ScryfallRepository.HostUrl}cards/named?fuzzy=";
         }
 
         [TestMethod]

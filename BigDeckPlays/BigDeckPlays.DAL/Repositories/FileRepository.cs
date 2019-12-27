@@ -24,6 +24,7 @@ namespace BigDeckPlays.DAL.Repositories
 
         public IEnumerable<string> ReadLines(string path)
         {
+            if (!File.Exists(path)) yield break;
             using (var file = new StreamReader(path))
             {
                 var s = "";

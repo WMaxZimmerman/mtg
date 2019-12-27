@@ -1,5 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BigDeckPlays.DAL.Repositories;
+using repos = BigDeckPlays.DAL.Repositories;
 using Moq;
 
 namespace BigDeckPlays.Tests.DAL.Repositories.ScryfallRepository
@@ -7,14 +7,14 @@ namespace BigDeckPlays.Tests.DAL.Repositories.ScryfallRepository
     [TestClass]
     public class TestScryfallRepository
     {
-        protected Mock<IApiRepository> _mockApi;
+        protected Mock<repos.IApiRepository> _mockApi;
         
-        protected ScryfallRepository _repo;
+        protected repos.ScryfallRepository _repo;
 
         [TestInitialize]
         public virtual void Init()
         {
-            _repo = new ScryfallRepository();
+            _repo = new repos.ScryfallRepository();
         }
     }
 }
