@@ -1,7 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using BigDeckPlays.DAL.Repositories;
 
-namespace BigDeckPlays.Tests.DAL.Repositories.ScryFallRepository
+namespace BigDeckPlays.Tests.DAL.Repositories.ScryfallRepository
 {
     [TestClass]
     public class TestGetFuzzyCardUrl: TestScryfallRepository
