@@ -14,8 +14,8 @@ namespace BigDeckPlays.DAL.Repositories
     public class InventoryRepository : IInventoryRepository
     {
         private IFileRepository _fileRepo;
-        private const string  _path = "c:/git/mtg/collections/my_collection.csv";
-        private const string  _writePath = "c:/git/mtg/collections/my_collection_temp.csv";
+        public const string  _path = "c:/git/mtg/collections/my_collection.csv";
+        public const string  _writePath = "c:/git/mtg/collections/my_collection_temp.csv";
 
         
         public InventoryRepository(IFileRepository fileRepo = null)

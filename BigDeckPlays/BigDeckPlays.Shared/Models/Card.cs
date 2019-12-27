@@ -12,5 +12,10 @@ namespace BigDeckPlays.Shared.Models
         {
             return this.Name == other.Name;
         }
+
+        public override bool Equals(object obj)
+        {
+            return this.Equals((Card)obj);
+        }
     }
 }
