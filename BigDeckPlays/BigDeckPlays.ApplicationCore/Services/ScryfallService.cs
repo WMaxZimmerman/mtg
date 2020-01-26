@@ -8,6 +8,8 @@ namespace BigDeckPlays.ApplicationCore.Services
     public interface IScryfallService
     {
         IEnumerable<Card> GetCards(IEnumerable<string> cardNames);
+        IEnumerable<Set> GetSets();
+        IEnumerable<Card> GetBySet(string setCode);
     }
     
     public class ScryfallService : IScryfallService
@@ -30,6 +32,16 @@ namespace BigDeckPlays.ApplicationCore.Services
                         var url = _repo.GetFuzzyCardUrl(name);
                         return _api.Get<Card>(url);
                     });
+        }
+
+        public IEnumerable<Set> GetSets()
+        {
+            return _repo.GetSets();
+        }
+
+        public IEnumerable<Card> GetBySet(string setCode)
+        {
+            return _repo.GetCardsForSet(setCode);
         }
     }
 }

@@ -1,0 +1,8 @@
+DROP TABLE CardTags;
+DROP TABLE DeckTags;
+DROP TABLE Tags;
+DROP TABLE DeckCards;
+DROP TABLE Decks;
+DROP TABLE CardSets;
+DROP TABLE Sets;
+DROP TABLE Cards;

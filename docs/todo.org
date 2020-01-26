@@ -1,0 +1,18 @@
+#+TITLE: To Do Items
+
+
+* Items
+- Initialize Database
+  - Install Postgres
+  - Create BigDeckPlays Database
+  - Setup Flyway to interact with database
+  - Setup Tables for database
+- Populate Database
+  - Determine Urls to pull data from scryfall
+    - Find all Sets
+    - For each set find all cards
+  - Use urls to pull data from Scryfall
+  - Write connectors to perform CRUD operations on database for
+    - Sets
+    - Cards
+  - Write process that combines the two processes to populate DB from nothing
