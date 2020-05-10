@@ -45,11 +45,6 @@ namespace BigDeckPlays.ApplicationCore.Services
 
             var connectionString = "";
             var dbPassword = "";
- 
-            var builder = new NpgsqlConnectionStringBuilder(connectionString)
-            {
-                Password = dbPassword
-            };
 
             using (var db = new DatabaseRepository())
             {
