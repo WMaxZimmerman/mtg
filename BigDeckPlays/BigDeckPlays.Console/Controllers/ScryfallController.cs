@@ -30,5 +30,18 @@ namespace BigDeckPlays.Console.Controllers
                 System.Console.WriteLine($"{card.Name} ({card.Cmc})");
             }
         }
+
+        
+        [CliCommand("dbcards", "")]
+        public static void GetAllDbCards()
+        {
+            var scryfall = new ScryfallService();
+            var cards = scryfall.GetDBCards();
+
+            foreach(var card in cards)
+            {
+                System.Console.WriteLine($"{card.Name} ({card.Cmc})");
+            }
+        }
     }
 }

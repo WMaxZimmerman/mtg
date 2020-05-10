@@ -1,4 +1,5 @@
 using BigDeckPlays.Shared.Models;
+using BigDeckPlays.DAL.Models;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -13,7 +14,7 @@ namespace BigDeckPlays.DAL.Repositories
     
     public class DatabaseRepository : DbContext, IDatabaseRepository
     {
-        public virtual DbSet<Card> Cards { get; set; }
+        public virtual DbSet<CardDb> Cards { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

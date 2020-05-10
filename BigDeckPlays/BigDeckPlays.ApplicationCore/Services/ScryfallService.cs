@@ -16,13 +16,14 @@ namespace BigDeckPlays.ApplicationCore.Services
     {
         private IApiRepository _api;
         private IScryfallRepository _repo;
+        private DatabaseRepository _db;
         
         public ScryfallService(IApiRepository api = null,
                                IScryfallRepository repo = null)
         {
             _api = api ?? new ApiRepository();
             _repo = repo ?? new ScryfallRepository();
-            
+            _db = new DatabaseRepository();
         }
         
         public IEnumerable<Card> GetCards(IEnumerable<string> cardNames)
@@ -32,6 +33,15 @@ namespace BigDeckPlays.ApplicationCore.Services
                         var url = _repo.GetFuzzyCardUrl(name);
                         return _api.Get<Card>(url);
                     });
+        }
+        
+        public IEnumerable<Card> GetDBCards()
+        {
+            return _db.Cards.Select(c => new Card
+            {
+                Name = c.CardName,
+                Cmc = c.ConvertedManaCost
+            });
         }
 
         public IEnumerable<Set> GetSets()
@@ -43,18 +53,23 @@ namespace BigDeckPlays.ApplicationCore.Services
         {
             var cards = _repo.GetCardsForSet(setCode).ToList();
 
-            var connectionString = "";
-            var dbPassword = "";
+            // var connectionString = "";
+            // var dbPassword = "";
+ 
+            // var builder = new NpgsqlConnectionStringBuilder(connectionString)
+            // {
+            //     Password = dbPassword
+            // };
 
-            using (var db = new DatabaseRepository())
-            {
-                foreach (var card in cards)
-                {
-                    db.Cards.Add(card);
-                }
+            // using (var db = new DatabaseRepository())
+            // {
+            //     foreach (var card in cards)
+            //     {
+            //         db.Cards.Add(card);
+            //     }
 
-                db.SaveChanges();
-            }
+            //     db.SaveChanges();
+            // }
             
             
             return cards;
