@@ -41,7 +41,28 @@ namespace BigDeckPlays.ApplicationCore.Services
 
         public IEnumerable<Card> GetBySet(string setCode)
         {
-            return _repo.GetCardsForSet(setCode);
+            var cards = _repo.GetCardsForSet(setCode).ToList();
+
+            var connectionString = "";
+            var dbPassword = "";
+ 
+            var builder = new NpgsqlConnectionStringBuilder(connectionString)
+            {
+                Password = dbPassword
+            };
+
+            using (var db = new DatabaseRepository())
+            {
+                foreach (var card in cards)
+                {
+                    db.Cards.Add(card);
+                }
+
+                db.SaveChanges();
+            }
+            
+            
+            return cards;
         }
     }
 }
