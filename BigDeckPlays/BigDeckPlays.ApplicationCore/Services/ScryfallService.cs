@@ -40,7 +40,7 @@ namespace BigDeckPlays.ApplicationCore.Services
 
         public IEnumerable<Card> GetBySet(string setCode)
         {
-            var cards = _repo.GetCardsForSet(setCode).ToList();
+            var cards = _repo.GetCardsForSet(setCode);
             
             return cards;
         }

@@ -95,7 +95,7 @@ namespace BigDeckPlays.DAL.db
                 entity.Property(e => e.CardId)
                     .IsRequired()
                     .HasColumnName("card_id")
-                    .HasMaxLength(255);
+                    .HasColumnType("UUID");
 
                 entity.Property(e => e.HighPrice)
                     .HasColumnName("high_price")
@@ -109,12 +109,10 @@ namespace BigDeckPlays.DAL.db
                     .HasColumnName("median_price")
                     .HasColumnType("numeric");
 
-                entity.Property(e => e.Quantity).HasColumnName("quantity");
-
                 entity.Property(e => e.SetId)
                     .IsRequired()
                     .HasColumnName("set_id")
-                    .HasMaxLength(255);
+                    .HasColumnType("UUID");
 
                 entity.HasOne(d => d.Card)
                     .WithMany(p => p.CardSet)
@@ -249,25 +247,37 @@ namespace BigDeckPlays.DAL.db
 
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
-                    .HasMaxLength(255);
+                    .HasColumnType("UUID");
 
-                entity.Property(e => e.Border)
-                    .HasColumnName("border")
-                    .HasMaxLength(255);
+                entity.Property(e => e.Code)
+                    .HasColumnName("code")
+                    .HasMaxLength(5);
 
                 entity.Property(e => e.Name)
                     .HasColumnName("name")
                     .HasMaxLength(255);
 
-                entity.Property(e => e.Number).HasColumnName("number");
-
-                entity.Property(e => e.Type)
-                    .HasColumnName("type")
+                entity.Property(e => e.SetType)
+                    .HasColumnName("set_type")
                     .HasMaxLength(255);
 
-                entity.Property(e => e.Url)
-                    .HasColumnName("url")
+                entity.Property(e => e.ReleasedAt)
+                    .HasColumnName("released_at")
+                    .HasColumnType("DATE");
+
+                entity.Property(e => e.BlockCode)
+                    .HasColumnName("block_code")
                     .HasMaxLength(255);
+
+                entity.Property(e => e.Block)
+                    .HasColumnName("block")
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.CardCount)
+                    .HasColumnName("card_count");
+
+                entity.Property(e => e.FoilOnly)
+                    .HasColumnName("foil_only");
             });
 
             modelBuilder.Entity<Tag>(entity =>

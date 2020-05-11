@@ -1,5 +1,8 @@
+using BigDeckPlays.DAL.Mappers;
+using BigDeckPlays.DAL.Models;
 using BigDeckPlays.Shared.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BigDeckPlays.DAL.Repositories
 {
@@ -31,29 +34,29 @@ namespace BigDeckPlays.DAL.Repositories
         public IEnumerable<Set> GetSets()
         {
             var url = HostUrl + "sets";
-            var data = _api.Get<ScryfallContainer<Set>>(url);
+            var result = _api.Get<ScryfallContainer<ApiSet>>(url);
 
-            return data.Data;
+            return result.Data.Select(SetMapper.ApiToShared);
         }
 
         public IEnumerable<Card> GetCardsForSet(string setCode)
         {
             var url = HostUrl + $"cards/search?order=set&q=e%3A{setCode}&unique=prints&page=";
             var hasMore = true;
-            var cards = new List<Card>();
+            var cards = new List<ApiCard>();
             var page = 1;
 
             while (hasMore)
             {
                 var pagedUrl = url + page;
-                var result = _api.Get<ScryfallContainer<Card>>(pagedUrl);
+                var result = _api.Get<ScryfallContainer<ApiCard>>(pagedUrl);
 
                 cards.AddRange(result.Data);
                 hasMore = result.Data.Count > 0;
                 page++;
             }
 
-            return cards;
+            return cards.Select(CardMapper.ApiToShared);
         }
     }
 }

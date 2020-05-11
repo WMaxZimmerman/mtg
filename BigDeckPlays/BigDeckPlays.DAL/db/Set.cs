@@ -10,12 +10,15 @@ namespace BigDeckPlays.DAL.db
             CardSet = new HashSet<CardSet>();
         }
 
-        public string Id { get; set; }
+        public Guid Id { get; set; }
+        public string Code { get; set; }
         public string Name { get; set; }
-        public string Border { get; set; }
-        public string Type { get; set; }
-        public string Url { get; set; }
-        public int? Number { get; set; }
+        public string SetType { get; set; }
+        public DateTime ReleasedAt { get; set; }
+        public string BlockCode { get; set; }
+        public string Block { get; set; }
+        public int CardCount { get; set; }
+        public bool FoilOnly { get; set; }
 
         public virtual ICollection<CardSet> CardSet { get; set; }
     }

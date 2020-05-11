@@ -1,3 +1,4 @@
+using System.Linq;
 using BigDeckPlays.ApplicationCore.Services;
 using NTrospection.CLI.Attributes;
 
@@ -10,11 +11,18 @@ namespace BigDeckPlays.Console.Controllers
         public static void OutputAllSets()
         {
             var scryfall = new ScryfallService();
-            var sets = scryfall.GetSets();
+            var sets = scryfall.GetSets().OrderBy(s => s.ReleasedAt);
 
             foreach(var s in sets)
             {
-                System.Console.WriteLine($"{s.Name} ({s.Code})");
+                System.Console.WriteLine($"{s.Id} : {s.Name} ({s.Code})");
+                System.Console.WriteLine($"Set Type = {s.SetType}");
+                System.Console.WriteLine($"Release At = {s.ReleasedAt}");
+                System.Console.WriteLine($"Block = {s.Block} ({s.BlockCode})");
+                System.Console.WriteLine($"Card Count = {s.CardCount}");
+                System.Console.WriteLine($"Digital = {s.Digital}");
+                System.Console.WriteLine($"Foil = {s.FoilOnly}");
+                System.Console.WriteLine("");
             }
         }
 

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace BigDeckPlays.Shared.Models
 {
@@ -7,8 +8,14 @@ namespace BigDeckPlays.Shared.Models
         public Guid Id { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
-        public string Set_Type { get; set; }
-        public int Card_Count { get; set; }
-        public DateTime Released_At { get; set; }
+        public string SetType { get; set; }
+        public DateTime ReleasedAt { get; set; }
+        public string BlockCode { get; set; }
+        public string Block { get; set; }
+        public int CardCount { get; set; }
+        public bool Digital { get; set; }
+        public bool FoilOnly { get; set; }
+
+        public IEnumerable<Card> Cards { get; set; }
     }
 }

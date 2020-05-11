@@ -25,7 +25,8 @@ namespace BigDeckPlays.ApplicationCore.Services
         {
             foreach(var card in _inventory.GetCards().OrderBy(c => c.Name))
             {
-                _console.WriteLine($"{card.Quantity} | {card.Name}");
+                // _console.WriteLine($"{card.Quantity} | {card.Name}");
+                _console.WriteLine($"{card.Name}");
             }
         }
 
