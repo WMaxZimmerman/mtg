@@ -28,5 +28,6 @@ namespace BigDeckPlays.DAL.db
         public virtual ICollection<CardTag> CardTag { get; set; }
         public virtual ICollection<Deck> Deck { get; set; }
         public virtual ICollection<DeckCard> DeckCard { get; set; }
+        public virtual ICollection<CollectionCard> CollectionCard { get; set; }
     }
 }

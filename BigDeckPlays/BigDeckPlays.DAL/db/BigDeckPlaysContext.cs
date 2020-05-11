@@ -23,6 +23,8 @@ namespace BigDeckPlays.DAL.db
         public virtual DbSet<DeckTag> DeckTag { get; set; }
         public virtual DbSet<Set> Set { get; set; }
         public virtual DbSet<Tag> Tag { get; set; }
+        public virtual DbSet<Collection> Collection { get; set; }
+        public virtual DbSet<CollectionCard> CollectionCard { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -278,6 +280,47 @@ namespace BigDeckPlays.DAL.db
                     .IsRequired()
                     .HasColumnName("name")
                     .HasMaxLength(255);
+            });
+
+            modelBuilder.Entity<Collection>(entity =>
+            {
+                entity.ToTable("collection", "dbo");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasColumnName("name")
+                    .HasMaxLength(255);
+            });
+
+            modelBuilder.Entity<CollectionCard>(entity =>
+            {
+                entity.ToTable("collection_card", "dbo");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.CardId)
+                    .IsRequired()
+                    .HasColumnName("card_id");
+
+                entity.Property(e => e.CollectionId)
+                    .IsRequired()
+                    .HasColumnName("collection_id");
+
+                entity.Property(e => e.Quantity).HasColumnName("quantity");
+
+                entity.HasOne(d => d.Card)
+                    .WithMany(p => p.CollectionCard)
+                    .HasForeignKey(d => d.CardId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("collection_card_card_id_fkey");
+
+                entity.HasOne(d => d.Collection)
+                    .WithMany(p => p.CollectionCard)
+                    .HasForeignKey(d => d.CollectionId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("collection_card_collection_id_fkey");
             });
 
             OnModelCreatingPartial(modelBuilder);
