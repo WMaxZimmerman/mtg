@@ -1,5 +1,6 @@
 using System;
-using BigDeckPlays.Shared.Models;
+using SharedCard = BigDeckPlays.Shared.Models.Card;
+using DbCard = BigDeckPlays.DAL.db.Card;
 
 namespace BigDeckPlays.DAL.Mappers
 {
@@ -7,20 +8,29 @@ namespace BigDeckPlays.DAL.Mappers
     {
         public static char Dilimeter = '|';
         
-        public static Card StringToCard(string cardString)
+        public static SharedCard StringToCard(string cardString)
         {
             var values = cardString.Split(Dilimeter);
             
-            return new Card
+            return new SharedCard
             {
                 Name = values[1],
                 Quantity = Convert.ToInt32(values[0])
             };
         }
 
-        public static string CardToString(Card card)
+        public static string CardToString(SharedCard card)
         {
             return $"{card.Quantity}{Dilimeter}{card.Name}";
+        }
+
+        public static SharedCard DbToShared(DbCard dbCard)
+        {
+            return new SharedCard
+            {
+                Name = dbCard.Name,
+                Cmc = dbCard.Cmc ?? 0
+            };
         }
     }
 }
