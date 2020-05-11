@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BigDeckPlays.DAL.Models
 {
-    public class CardDb:  IEquatable<CardDb>
+    public partial class CardDb:  IEquatable<CardDb>
     {
         [Key]
         public int CardId {get;set;}
