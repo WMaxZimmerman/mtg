@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace BigDeckPlays.DAL.Migrations
+namespace BigDeckPlays.DAL.db.Migrations
 {
     [DbContext(typeof(BigDeckPlaysContext))]
-    [Migration("20200511171414_Test")]
-    partial class Test
+    [Migration("20200511172709_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

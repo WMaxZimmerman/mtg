@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace BigDeckPlays.DAL.Migrations
+namespace BigDeckPlays.DAL.db.Migrations
 {
     [DbContext(typeof(BigDeckPlaysContext))]
     partial class BigDeckPlaysContextModelSnapshot : ModelSnapshot
