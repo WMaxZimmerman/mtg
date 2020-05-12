@@ -22,6 +22,7 @@ namespace BigDeckPlays.DAL.Models
         public string Loyalty { get; set; }
         public string Type_Line { get; set; }
         public bool Reserved { get; set; }
+        public List<ApiCardFace> Card_Faces { get; set; }
 
         // Not Using
         public int Mtgo_Id { get; set; }        
@@ -29,6 +30,5 @@ namespace BigDeckPlays.DAL.Models
         public Uri Rulings_Uri {get; set; }
         public Uri Scryfall_Uri {get; set; }
         public Uri Uri {get; set; }
-        public char[]? Color_Indicator { get; set; }
     }
 }

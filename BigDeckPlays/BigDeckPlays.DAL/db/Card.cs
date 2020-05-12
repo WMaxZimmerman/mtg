@@ -11,9 +11,11 @@ namespace BigDeckPlays.DAL.db
             CardTag = new HashSet<CardTag>();
             Deck = new HashSet<Deck>();
             DeckCard = new HashSet<DeckCard>();
+            CollectionCard = new HashSet<CollectionCard>();
+            CardFaces = new HashSet<CardFace>();
         }
 
-        public string Id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public int? Cmc { get; set; }
         public string Cost { get; set; }
@@ -29,5 +31,6 @@ namespace BigDeckPlays.DAL.db
         public virtual ICollection<Deck> Deck { get; set; }
         public virtual ICollection<DeckCard> DeckCard { get; set; }
         public virtual ICollection<CollectionCard> CollectionCard { get; set; }
+        public virtual ICollection<CardFace> CardFaces { get; set; }
     }
 }

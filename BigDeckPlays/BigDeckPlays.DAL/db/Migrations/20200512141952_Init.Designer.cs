@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BigDeckPlays.DAL.db.Migrations
 {
     [DbContext(typeof(BigDeckPlaysContext))]
-    [Migration("20200511181017_AddCollection")]
-    partial class AddCollection
+    [Migration("20200512141952_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,10 +23,10 @@ namespace BigDeckPlays.DAL.db.Migrations
 
             modelBuilder.Entity("BigDeckPlays.DAL.db.Card", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("id")
-                        .HasColumnType("character varying(255)")
-                        .HasMaxLength(255);
+                        .HasColumnType("UUID");
 
                     b.Property<int?>("Cmc")
                         .HasColumnName("cmc")
@@ -81,19 +81,77 @@ namespace BigDeckPlays.DAL.db.Migrations
                     b.ToTable("card","dbo");
                 });
 
-            modelBuilder.Entity("BigDeckPlays.DAL.db.CardSet", b =>
+            modelBuilder.Entity("BigDeckPlays.DAL.db.CardFace", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("id")
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("UUID");
 
-                    b.Property<string>("CardId")
-                        .IsRequired()
-                        .HasColumnName("card_id")
+                    b.Property<string>("Cost")
+                        .HasColumnName("cost")
                         .HasColumnType("character varying(255)")
                         .HasMaxLength(255);
+
+                    b.Property<string>("Loyalty")
+                        .HasColumnName("loyalty")
+                        .HasColumnType("character varying(255)")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("Name")
+                        .HasColumnName("name")
+                        .HasColumnType("character varying(255)")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("OracleText")
+                        .HasColumnName("oracle_text")
+                        .HasColumnType("character varying(255)")
+                        .HasMaxLength(255);
+
+                    b.Property<Guid>("ParentId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Power")
+                        .HasColumnName("power")
+                        .HasColumnType("character varying(255)")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("Subtypes")
+                        .HasColumnName("subtypes")
+                        .HasColumnType("character varying(255)")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("Toughness")
+                        .HasColumnName("toughness")
+                        .HasColumnType("character varying(255)")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("Types")
+                        .HasColumnName("types")
+                        .HasColumnType("character varying(255)")
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique()
+                        .HasName("card_face_name_key");
+
+                    b.HasIndex("ParentId");
+
+                    b.ToTable("card_face","dbo");
+                });
+
+            modelBuilder.Entity("BigDeckPlays.DAL.db.CardSet", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("id")
+                        .HasColumnType("UUID");
+
+                    b.Property<Guid>("CardId")
+                        .HasColumnName("card_id")
+                        .HasColumnType("UUID");
 
                     b.Property<decimal?>("HighPrice")
                         .HasColumnName("high_price")
@@ -107,15 +165,9 @@ namespace BigDeckPlays.DAL.db.Migrations
                         .HasColumnName("median_price")
                         .HasColumnType("numeric");
 
-                    b.Property<int>("Quantity")
-                        .HasColumnName("quantity")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("SetId")
-                        .IsRequired()
+                    b.Property<Guid>("SetId")
                         .HasColumnName("set_id")
-                        .HasColumnType("character varying(255)")
-                        .HasMaxLength(255);
+                        .HasColumnType("UUID");
 
                     b.HasKey("Id");
 
@@ -128,21 +180,18 @@ namespace BigDeckPlays.DAL.db.Migrations
 
             modelBuilder.Entity("BigDeckPlays.DAL.db.CardTag", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("id")
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("UUID");
 
-                    b.Property<string>("CardId")
-                        .IsRequired()
+                    b.Property<Guid>("CardId")
                         .HasColumnName("card_id")
-                        .HasColumnType("character varying(255)")
-                        .HasMaxLength(255);
+                        .HasColumnType("UUID");
 
-                    b.Property<int>("TagId")
+                    b.Property<Guid>("TagId")
                         .HasColumnName("tag_id")
-                        .HasColumnType("integer");
+                        .HasColumnType("UUID");
 
                     b.HasKey("Id");
 
@@ -155,11 +204,10 @@ namespace BigDeckPlays.DAL.db.Migrations
 
             modelBuilder.Entity("BigDeckPlays.DAL.db.Collection", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("id")
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("UUID");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -174,20 +222,18 @@ namespace BigDeckPlays.DAL.db.Migrations
 
             modelBuilder.Entity("BigDeckPlays.DAL.db.CollectionCard", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("id")
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("UUID");
 
-                    b.Property<string>("CardId")
-                        .IsRequired()
+                    b.Property<Guid>("CardId")
                         .HasColumnName("card_id")
-                        .HasColumnType("character varying(255)");
+                        .HasColumnType("UUID");
 
-                    b.Property<int>("CollectionId")
+                    b.Property<Guid>("CollectionId")
                         .HasColumnName("collection_id")
-                        .HasColumnType("integer");
+                        .HasColumnType("UUID");
 
                     b.Property<int>("Quantity")
                         .HasColumnName("quantity")
@@ -204,16 +250,14 @@ namespace BigDeckPlays.DAL.db.Migrations
 
             modelBuilder.Entity("BigDeckPlays.DAL.db.Deck", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("id")
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("UUID");
 
-                    b.Property<string>("Commander")
-                        .IsRequired()
-                        .HasColumnName("commander")
-                        .HasColumnType("character varying(255)")
+                    b.Property<Guid>("CommanderId")
+                        .HasColumnName("commander_id")
+                        .HasColumnType("uuid")
                         .HasMaxLength(255);
 
                     b.Property<string>("Name")
@@ -224,32 +268,25 @@ namespace BigDeckPlays.DAL.db.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Commander");
-
-                    b.HasIndex("Name")
-                        .IsUnique()
-                        .HasName("deck_name_key");
+                    b.HasIndex("CommanderId");
 
                     b.ToTable("deck","dbo");
                 });
 
             modelBuilder.Entity("BigDeckPlays.DAL.db.DeckCard", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("id")
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("UUID");
 
-                    b.Property<string>("CardId")
-                        .IsRequired()
+                    b.Property<Guid>("CardId")
                         .HasColumnName("card_id")
-                        .HasColumnType("character varying(255)")
-                        .HasMaxLength(255);
+                        .HasColumnType("UUID");
 
-                    b.Property<int>("DeckId")
+                    b.Property<Guid>("DeckId")
                         .HasColumnName("deck_id")
-                        .HasColumnType("integer");
+                        .HasColumnType("UUID");
 
                     b.Property<int>("Quantity")
                         .ValueGeneratedOnAdd()
@@ -268,25 +305,21 @@ namespace BigDeckPlays.DAL.db.Migrations
 
             modelBuilder.Entity("BigDeckPlays.DAL.db.DeckTag", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("id")
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("UUID");
 
-                    b.Property<int>("DeckId")
+                    b.Property<Guid>("DeckId")
                         .HasColumnName("deck_id")
-                        .HasColumnType("integer");
+                        .HasColumnType("UUID");
 
                     b.Property<int>("Quantity")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("quantity")
-                        .HasColumnType("integer")
-                        .HasDefaultValueSql("1");
-
-                    b.Property<int>("TagId")
-                        .HasColumnName("tag_id")
                         .HasColumnType("integer");
+
+                    b.Property<Guid>("TagId")
+                        .HasColumnName("tag_id")
+                        .HasColumnType("UUID");
 
                     b.HasKey("Id");
 
@@ -299,32 +332,45 @@ namespace BigDeckPlays.DAL.db.Migrations
 
             modelBuilder.Entity("BigDeckPlays.DAL.db.Set", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("id")
+                        .HasColumnType("UUID");
+
+                    b.Property<string>("Block")
+                        .HasColumnName("block")
                         .HasColumnType("character varying(255)")
                         .HasMaxLength(255);
 
-                    b.Property<string>("Border")
-                        .HasColumnName("border")
+                    b.Property<string>("BlockCode")
+                        .HasColumnName("block_code")
                         .HasColumnType("character varying(255)")
                         .HasMaxLength(255);
+
+                    b.Property<int>("CardCount")
+                        .HasColumnName("card_count")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Code")
+                        .HasColumnName("code")
+                        .HasColumnType("character varying(5)")
+                        .HasMaxLength(5);
+
+                    b.Property<bool>("FoilOnly")
+                        .HasColumnName("foil_only")
+                        .HasColumnType("boolean");
 
                     b.Property<string>("Name")
                         .HasColumnName("name")
                         .HasColumnType("character varying(255)")
                         .HasMaxLength(255);
 
-                    b.Property<int?>("Number")
-                        .HasColumnName("number")
-                        .HasColumnType("integer");
+                    b.Property<DateTime>("ReleasedAt")
+                        .HasColumnName("released_at")
+                        .HasColumnType("DATE");
 
-                    b.Property<string>("Type")
-                        .HasColumnName("type")
-                        .HasColumnType("character varying(255)")
-                        .HasMaxLength(255);
-
-                    b.Property<string>("Url")
-                        .HasColumnName("url")
+                    b.Property<string>("SetType")
+                        .HasColumnName("set_type")
                         .HasColumnType("character varying(255)")
                         .HasMaxLength(255);
 
@@ -339,11 +385,10 @@ namespace BigDeckPlays.DAL.db.Migrations
 
             modelBuilder.Entity("BigDeckPlays.DAL.db.Tag", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("id")
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("UUID");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -354,6 +399,15 @@ namespace BigDeckPlays.DAL.db.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("tag","dbo");
+                });
+
+            modelBuilder.Entity("BigDeckPlays.DAL.db.CardFace", b =>
+                {
+                    b.HasOne("BigDeckPlays.DAL.db.Card", "Card")
+                        .WithMany("CardFaces")
+                        .HasForeignKey("ParentId")
+                        .HasConstraintName("card_face_card_id_fkey")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("BigDeckPlays.DAL.db.CardSet", b =>
@@ -405,7 +459,7 @@ namespace BigDeckPlays.DAL.db.Migrations
                 {
                     b.HasOne("BigDeckPlays.DAL.db.Card", "CommanderNavigation")
                         .WithMany("Deck")
-                        .HasForeignKey("Commander")
+                        .HasForeignKey("CommanderId")
                         .HasConstraintName("deck_commander_fkey")
                         .IsRequired();
                 });

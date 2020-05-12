@@ -11,9 +11,9 @@ namespace BigDeckPlays.DAL.db
             DeckTag = new HashSet<DeckTag>();
         }
 
-        public int Id { get; set; }
+        public Guid Id { get; set; }
+        public Guid CommanderId { get; set; }
         public string Name { get; set; }
-        public string Commander { get; set; }
 
         public virtual Card CommanderNavigation { get; set; }
         public virtual ICollection<DeckCard> DeckCard { get; set; }

@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BigDeckPlays.DAL.db.Migrations
 {
@@ -15,7 +15,7 @@ namespace BigDeckPlays.DAL.db.Migrations
                 schema: "dbo",
                 columns: table => new
                 {
-                    id = table.Column<string>(maxLength: 255, nullable: false),
+                    id = table.Column<Guid>(type: "UUID", nullable: false),
                     name = table.Column<string>(maxLength: 255, nullable: true),
                     cmc = table.Column<int>(nullable: true),
                     cost = table.Column<string>(maxLength: 255, nullable: true),
@@ -32,16 +32,32 @@ namespace BigDeckPlays.DAL.db.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "collection",
+                schema: "dbo",
+                columns: table => new
+                {
+                    id = table.Column<Guid>(type: "UUID", nullable: false),
+                    name = table.Column<string>(maxLength: 255, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_collection", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "set",
                 schema: "dbo",
                 columns: table => new
                 {
-                    id = table.Column<string>(maxLength: 255, nullable: false),
+                    id = table.Column<Guid>(type: "UUID", nullable: false),
+                    code = table.Column<string>(maxLength: 5, nullable: true),
                     name = table.Column<string>(maxLength: 255, nullable: true),
-                    border = table.Column<string>(maxLength: 255, nullable: true),
-                    type = table.Column<string>(maxLength: 255, nullable: true),
-                    url = table.Column<string>(maxLength: 255, nullable: true),
-                    number = table.Column<int>(nullable: true)
+                    set_type = table.Column<string>(maxLength: 255, nullable: true),
+                    released_at = table.Column<DateTime>(type: "DATE", nullable: false),
+                    block_code = table.Column<string>(maxLength: 255, nullable: true),
+                    block = table.Column<string>(maxLength: 255, nullable: true),
+                    card_count = table.Column<int>(nullable: false),
+                    foil_only = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -53,8 +69,7 @@ namespace BigDeckPlays.DAL.db.Migrations
                 schema: "dbo",
                 columns: table => new
                 {
-                    id = table.Column<int>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    id = table.Column<Guid>(type: "UUID", nullable: false),
                     name = table.Column<string>(maxLength: 255, nullable: false)
                 },
                 constraints: table =>
@@ -63,23 +78,79 @@ namespace BigDeckPlays.DAL.db.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "card_face",
+                schema: "dbo",
+                columns: table => new
+                {
+                    id = table.Column<Guid>(type: "UUID", nullable: false),
+                    ParentId = table.Column<Guid>(nullable: false),
+                    name = table.Column<string>(maxLength: 255, nullable: true),
+                    cost = table.Column<string>(maxLength: 255, nullable: true),
+                    oracle_text = table.Column<string>(maxLength: 255, nullable: true),
+                    power = table.Column<string>(maxLength: 255, nullable: true),
+                    toughness = table.Column<string>(maxLength: 255, nullable: true),
+                    loyalty = table.Column<string>(maxLength: 255, nullable: true),
+                    types = table.Column<string>(maxLength: 255, nullable: true),
+                    subtypes = table.Column<string>(maxLength: 255, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_card_face", x => x.id);
+                    table.ForeignKey(
+                        name: "card_face_card_id_fkey",
+                        column: x => x.ParentId,
+                        principalSchema: "dbo",
+                        principalTable: "card",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "deck",
                 schema: "dbo",
                 columns: table => new
                 {
-                    id = table.Column<int>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    name = table.Column<string>(maxLength: 255, nullable: false),
-                    commander = table.Column<string>(maxLength: 255, nullable: false)
+                    id = table.Column<Guid>(type: "UUID", nullable: false),
+                    commander_id = table.Column<Guid>(maxLength: 255, nullable: false),
+                    name = table.Column<string>(maxLength: 255, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_deck", x => x.id);
                     table.ForeignKey(
                         name: "deck_commander_fkey",
-                        column: x => x.commander,
+                        column: x => x.commander_id,
                         principalSchema: "dbo",
                         principalTable: "card",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "collection_card",
+                schema: "dbo",
+                columns: table => new
+                {
+                    id = table.Column<Guid>(type: "UUID", nullable: false),
+                    collection_id = table.Column<Guid>(type: "UUID", nullable: false),
+                    card_id = table.Column<Guid>(type: "UUID", nullable: false),
+                    quantity = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_collection_card", x => x.id);
+                    table.ForeignKey(
+                        name: "collection_card_card_id_fkey",
+                        column: x => x.card_id,
+                        principalSchema: "dbo",
+                        principalTable: "card",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "collection_card_collection_id_fkey",
+                        column: x => x.collection_id,
+                        principalSchema: "dbo",
+                        principalTable: "collection",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -89,14 +160,12 @@ namespace BigDeckPlays.DAL.db.Migrations
                 schema: "dbo",
                 columns: table => new
                 {
-                    id = table.Column<int>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    card_id = table.Column<string>(maxLength: 255, nullable: false),
-                    set_id = table.Column<string>(maxLength: 255, nullable: false),
+                    id = table.Column<Guid>(type: "UUID", nullable: false),
+                    card_id = table.Column<Guid>(type: "UUID", nullable: false),
+                    set_id = table.Column<Guid>(type: "UUID", nullable: false),
                     high_price = table.Column<decimal>(type: "numeric", nullable: true),
                     median_price = table.Column<decimal>(type: "numeric", nullable: true),
-                    low_price = table.Column<decimal>(type: "numeric", nullable: true),
-                    quantity = table.Column<int>(nullable: false)
+                    low_price = table.Column<decimal>(type: "numeric", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -122,10 +191,9 @@ namespace BigDeckPlays.DAL.db.Migrations
                 schema: "dbo",
                 columns: table => new
                 {
-                    id = table.Column<int>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    card_id = table.Column<string>(maxLength: 255, nullable: false),
-                    tag_id = table.Column<int>(nullable: false)
+                    id = table.Column<Guid>(type: "UUID", nullable: false),
+                    card_id = table.Column<Guid>(type: "UUID", nullable: false),
+                    tag_id = table.Column<Guid>(type: "UUID", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -151,10 +219,9 @@ namespace BigDeckPlays.DAL.db.Migrations
                 schema: "dbo",
                 columns: table => new
                 {
-                    id = table.Column<int>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    deck_id = table.Column<int>(nullable: false),
-                    card_id = table.Column<string>(maxLength: 255, nullable: false),
+                    id = table.Column<Guid>(type: "UUID", nullable: false),
+                    deck_id = table.Column<Guid>(type: "UUID", nullable: false),
+                    card_id = table.Column<Guid>(type: "UUID", nullable: false),
                     quantity = table.Column<int>(nullable: false, defaultValueSql: "1")
                 },
                 constraints: table =>
@@ -181,11 +248,10 @@ namespace BigDeckPlays.DAL.db.Migrations
                 schema: "dbo",
                 columns: table => new
                 {
-                    id = table.Column<int>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    deck_id = table.Column<int>(nullable: false),
-                    tag_id = table.Column<int>(nullable: false),
-                    quantity = table.Column<int>(nullable: false, defaultValueSql: "1")
+                    id = table.Column<Guid>(type: "UUID", nullable: false),
+                    deck_id = table.Column<Guid>(type: "UUID", nullable: false),
+                    tag_id = table.Column<Guid>(type: "UUID", nullable: false),
+                    Quantity = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -214,6 +280,19 @@ namespace BigDeckPlays.DAL.db.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "card_face_name_key",
+                schema: "dbo",
+                table: "card_face",
+                column: "name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_card_face_ParentId",
+                schema: "dbo",
+                table: "card_face",
+                column: "ParentId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_card_set_card_id",
                 schema: "dbo",
                 table: "card_set",
@@ -238,17 +317,22 @@ namespace BigDeckPlays.DAL.db.Migrations
                 column: "tag_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_deck_commander",
+                name: "IX_collection_card_card_id",
                 schema: "dbo",
-                table: "deck",
-                column: "commander");
+                table: "collection_card",
+                column: "card_id");
 
             migrationBuilder.CreateIndex(
-                name: "deck_name_key",
+                name: "IX_collection_card_collection_id",
+                schema: "dbo",
+                table: "collection_card",
+                column: "collection_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_deck_commander_id",
                 schema: "dbo",
                 table: "deck",
-                column: "name",
-                unique: true);
+                column: "commander_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_deck_card_card_id",
@@ -285,11 +369,19 @@ namespace BigDeckPlays.DAL.db.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "card_face",
+                schema: "dbo");
+
+            migrationBuilder.DropTable(
                 name: "card_set",
                 schema: "dbo");
 
             migrationBuilder.DropTable(
                 name: "card_tag",
+                schema: "dbo");
+
+            migrationBuilder.DropTable(
+                name: "collection_card",
                 schema: "dbo");
 
             migrationBuilder.DropTable(
@@ -302,6 +394,10 @@ namespace BigDeckPlays.DAL.db.Migrations
 
             migrationBuilder.DropTable(
                 name: "set",
+                schema: "dbo");
+
+            migrationBuilder.DropTable(
+                name: "collection",
                 schema: "dbo");
 
             migrationBuilder.DropTable(

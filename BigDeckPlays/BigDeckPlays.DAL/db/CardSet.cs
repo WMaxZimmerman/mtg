@@ -4,7 +4,7 @@ namespace BigDeckPlays.DAL.db
 {
     public partial class CardSet
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public Guid CardId { get; set; }
         public Guid SetId { get; set; }
         public decimal? HighPrice { get; set; }

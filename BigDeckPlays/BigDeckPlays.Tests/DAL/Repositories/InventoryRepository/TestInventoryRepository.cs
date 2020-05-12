@@ -26,7 +26,6 @@ namespace BigDeckPlays.Tests.DAL.Repositories.InventoryRepository
             return new Card
             {
                 Name = Guid.NewGuid().ToString(),
-                Quantity = _randy.Next(11)
             };
         }
     }

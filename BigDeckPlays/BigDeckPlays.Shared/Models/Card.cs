@@ -5,6 +5,15 @@ namespace BigDeckPlays.Shared.Models
 {
     public class Card: IEquatable<Card>
     {
+        public Card()
+        {
+            Colors = new List<char>();
+            ColorIdentity = new List<char>();
+            Types = new List<string>();
+            Subtypes = new List<string>();
+            Faces = new List<CardFace>();
+        }
+        
         public Guid Id { get; set; }
         public Guid OracleId { get; set; }
         public string Name { get; set; }
@@ -24,6 +33,8 @@ namespace BigDeckPlays.Shared.Models
         public string StandardLegality { get; set; }
         public string ModernLegality { get; set; }
         public string PioneerLegality { get; set; }
+
+        public List<CardFace> Faces { get; set; }
 
         public bool Equals(Card other)
         {

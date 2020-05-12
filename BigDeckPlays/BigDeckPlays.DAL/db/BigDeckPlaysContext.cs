@@ -33,7 +33,7 @@ namespace BigDeckPlays.DAL.db
                 // warning To protect potentially sensitive information in your connection string,
                 // you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263
                 // for guidance on storing connection strings.
-                optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=bigdeckplays;Username=postgres;Password=d465dda32910478494c5e34d05627938");
+                optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=bigdeckplays;Username=postgres;Password=secret_db_password");
             }
         }
 
@@ -49,7 +49,7 @@ namespace BigDeckPlays.DAL.db
 
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
-                    .HasMaxLength(255);
+                    .HasColumnType("UUID");
 
                 entity.Property(e => e.Cmc).HasColumnName("cmc");
 
@@ -86,11 +86,64 @@ namespace BigDeckPlays.DAL.db
                     .HasMaxLength(255);
             });
 
+            modelBuilder.Entity<CardFace>(entity =>
+            {
+                entity.ToTable("card_face", "dbo");
+
+                entity.HasIndex(e => e.Name)
+                    .HasName("card_face_name_key")
+                    .IsUnique();
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("UUID");
+
+                entity.Property(e => e.Cost)
+                    .HasColumnName("cost")
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.Name)
+                    .HasColumnName("name")
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.OracleText)
+                    .HasColumnName("oracle_text")
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.Power)
+                    .HasColumnName("power")
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.Toughness)
+                    .HasColumnName("toughness")
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.Loyalty)
+                    .HasColumnName("loyalty")
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.Types)
+                    .HasColumnName("types")
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.Subtypes)
+                    .HasColumnName("subtypes")
+                    .HasMaxLength(255);
+
+                entity.HasOne(d => d.Card)
+                    .WithMany(p => p.CardFaces)
+                    .HasForeignKey(d => d.ParentId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("card_face_card_id_fkey");
+            });
+
             modelBuilder.Entity<CardSet>(entity =>
             {
                 entity.ToTable("card_set", "dbo");
 
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("UUID");
 
                 entity.Property(e => e.CardId)
                     .IsRequired()
@@ -131,14 +184,19 @@ namespace BigDeckPlays.DAL.db
             {
                 entity.ToTable("card_tag", "dbo");
 
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("UUID");
 
                 entity.Property(e => e.CardId)
                     .IsRequired()
                     .HasColumnName("card_id")
-                    .HasMaxLength(255);
+                    .HasColumnType("UUID");
 
-                entity.Property(e => e.TagId).HasColumnName("tag_id");
+                entity.Property(e => e.TagId)
+                    .IsRequired()
+                    .HasColumnName("tag_id")
+                    .HasColumnType("UUID");
 
                 entity.HasOne(d => d.Card)
                     .WithMany(p => p.CardTag)
@@ -157,15 +215,13 @@ namespace BigDeckPlays.DAL.db
             {
                 entity.ToTable("deck", "dbo");
 
-                entity.HasIndex(e => e.Name)
-                    .HasName("deck_name_key")
-                    .IsUnique();
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("UUID");
 
-                entity.Property(e => e.Id).HasColumnName("id");
-
-                entity.Property(e => e.Commander)
+                entity.Property(e => e.CommanderId)
                     .IsRequired()
-                    .HasColumnName("commander")
+                    .HasColumnName("commander_id")
                     .HasMaxLength(255);
 
                 entity.Property(e => e.Name)
@@ -175,7 +231,7 @@ namespace BigDeckPlays.DAL.db
 
                 entity.HasOne(d => d.CommanderNavigation)
                     .WithMany(p => p.Deck)
-                    .HasForeignKey(d => d.Commander)
+                    .HasForeignKey(d => d.CommanderId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("deck_commander_fkey");
             });
@@ -184,14 +240,18 @@ namespace BigDeckPlays.DAL.db
             {
                 entity.ToTable("deck_card", "dbo");
 
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("UUID");
 
                 entity.Property(e => e.CardId)
                     .IsRequired()
                     .HasColumnName("card_id")
-                    .HasMaxLength(255);
+                    .HasColumnType("UUID");
 
-                entity.Property(e => e.DeckId).HasColumnName("deck_id");
+                entity.Property(e => e.DeckId)
+                    .HasColumnName("deck_id")
+                    .HasColumnType("UUID");
 
                 entity.Property(e => e.Quantity)
                     .HasColumnName("quantity")
@@ -214,15 +274,17 @@ namespace BigDeckPlays.DAL.db
             {
                 entity.ToTable("deck_tag", "dbo");
 
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("UUID");
 
-                entity.Property(e => e.DeckId).HasColumnName("deck_id");
+                entity.Property(e => e.DeckId)
+                    .HasColumnName("deck_id")
+                    .HasColumnType("UUID");
 
-                entity.Property(e => e.Quantity)
-                    .HasColumnName("quantity")
-                    .HasDefaultValueSql("1");
-
-                entity.Property(e => e.TagId).HasColumnName("tag_id");
+                entity.Property(e => e.TagId)
+                    .HasColumnName("tag_id")
+                    .HasColumnType("UUID");
 
                 entity.HasOne(d => d.Deck)
                     .WithMany(p => p.DeckTag)
@@ -284,7 +346,9 @@ namespace BigDeckPlays.DAL.db
             {
                 entity.ToTable("tag", "dbo");
 
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("UUID");
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -296,7 +360,9 @@ namespace BigDeckPlays.DAL.db
             {
                 entity.ToTable("collection", "dbo");
 
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("UUID");
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -308,15 +374,19 @@ namespace BigDeckPlays.DAL.db
             {
                 entity.ToTable("collection_card", "dbo");
 
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("UUID");
 
                 entity.Property(e => e.CardId)
                     .IsRequired()
-                    .HasColumnName("card_id");
+                    .HasColumnName("card_id")
+                    .HasColumnType("UUID");
 
                 entity.Property(e => e.CollectionId)
                     .IsRequired()
-                    .HasColumnName("collection_id");
+                    .HasColumnName("collection_id")
+                    .HasColumnType("UUID");
 
                 entity.Property(e => e.Quantity).HasColumnName("quantity");
 
