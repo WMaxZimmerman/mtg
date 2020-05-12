@@ -11,7 +11,7 @@ namespace BigDeckPlays.DAL.Models
         public DateTime Released_At { get; set; }
         public string Block_Code { get; set; }
         public string Block { get; set; }
-        public int CardCount { get; set; }
+        public int Card_Count { get; set; }
 
         // Not Using
         public string Parent_Set_Code { get; set; }

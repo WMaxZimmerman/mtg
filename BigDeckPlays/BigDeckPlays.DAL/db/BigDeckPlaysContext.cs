@@ -313,7 +313,7 @@ namespace BigDeckPlays.DAL.db
 
                 entity.Property(e => e.Code)
                     .HasColumnName("code")
-                    .HasMaxLength(5);
+                    .HasMaxLength(255);
 
                 entity.Property(e => e.Name)
                     .HasColumnName("name")

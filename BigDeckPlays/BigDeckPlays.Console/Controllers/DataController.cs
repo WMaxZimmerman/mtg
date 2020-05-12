@@ -11,5 +11,12 @@ namespace BigDeckPlays.Console.Controllers
         {
             System.Console.WriteLine("Method not yet implemented");
         }
+
+        [CliCommand("syncSets", "")]
+        public static void SyncSets()
+        {
+            var service = new SyncService();
+            service.SyncSets();
+        }
     }
 }
