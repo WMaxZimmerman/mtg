@@ -3,15 +3,17 @@ using System;
 using BigDeckPlays.DAL.db;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace BigDeckPlays.DAL.db.Migrations
 {
     [DbContext(typeof(BigDeckPlaysContext))]
-    partial class BigDeckPlaysContextModelSnapshot : ModelSnapshot
+    [Migration("20200527140621_RemovesUniqueNameForFaces")]
+    partial class RemovesUniqueNameForFaces
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

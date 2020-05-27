@@ -3,15 +3,17 @@ using System;
 using BigDeckPlays.DAL.db;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace BigDeckPlays.DAL.db.Migrations
 {
     [DbContext(typeof(BigDeckPlaysContext))]
-    partial class BigDeckPlaysContextModelSnapshot : ModelSnapshot
+    [Migration("20200518220414_FixesColorIdentity")]
+    partial class FixesColorIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -72,9 +74,14 @@ namespace BigDeckPlays.DAL.db.Migrations
                         .HasColumnType("character varying(255)")
                         .HasMaxLength(255);
 
+                    b.Property<Guid>("OracleId")
+                        .HasColumnName("oracle_id")
+                        .HasColumnType("UUID");
+
                     b.Property<string>("OracleText")
                         .HasColumnName("oracle_text")
-                        .HasColumnType("text");
+                        .HasColumnType("character varying(255)")
+                        .HasMaxLength(255);
 
                     b.Property<string>("PioneerLegality")
                         .HasColumnName("pioneer_legality")
@@ -143,7 +150,8 @@ namespace BigDeckPlays.DAL.db.Migrations
 
                     b.Property<string>("OracleText")
                         .HasColumnName("oracle_text")
-                        .HasColumnType("text");
+                        .HasColumnType("character varying(255)")
+                        .HasMaxLength(255);
 
                     b.Property<Guid>("ParentId")
                         .HasColumnType("uuid");
@@ -171,6 +179,7 @@ namespace BigDeckPlays.DAL.db.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("Name")
+                        .IsUnique()
                         .HasName("card_face_name_key");
 
                     b.HasIndex("ParentId");
@@ -391,10 +400,6 @@ namespace BigDeckPlays.DAL.db.Migrations
                         .HasColumnName("code")
                         .HasColumnType("character varying(255)")
                         .HasMaxLength(255);
-
-                    b.Property<bool>("Completed")
-                        .HasColumnName("completed")
-                        .HasColumnType("boolean");
 
                     b.Property<bool>("FoilOnly")
                         .HasColumnName("foil_only")

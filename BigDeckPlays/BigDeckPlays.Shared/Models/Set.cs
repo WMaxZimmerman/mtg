@@ -5,6 +5,11 @@ namespace BigDeckPlays.Shared.Models
 {
     public class Set
     {
+        public Set()
+        {
+            Cards = new List<Card>();
+        }
+        
         public Guid Id { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
@@ -15,6 +20,7 @@ namespace BigDeckPlays.Shared.Models
         public int CardCount { get; set; }
         public bool Digital { get; set; }
         public bool FoilOnly { get; set; }
+        public bool Completed { get; set; }
 
         public IEnumerable<Card> Cards { get; set; }
     }

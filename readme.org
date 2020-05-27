@@ -1,3 +1,9 @@
 #+TITLE: Big Deck Plays
 
 
+* Commands
+** database
+- dotnet ef migrations add <name>
+- dotnet ef migrations list
+- dotnet ef database update
+- psql -U postgres -d bigdeckplays

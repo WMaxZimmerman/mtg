@@ -6,5 +6,6 @@ namespace BigDeckPlays.DAL.Models
         public string Pioneer { get; set; }
         public string Modern { get; set; }
         public string Commander { get; set; }
+        public string Brawl { get; set; }
     }
 }

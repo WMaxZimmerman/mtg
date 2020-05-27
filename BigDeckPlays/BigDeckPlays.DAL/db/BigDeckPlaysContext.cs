@@ -51,38 +51,71 @@ namespace BigDeckPlays.DAL.db
                     .HasColumnName("id")
                     .HasColumnType("UUID");
 
+                entity.Property(e => e.Name)
+                    .HasColumnName("name")
+                    .HasMaxLength(255);
+
                 entity.Property(e => e.Cmc).HasColumnName("cmc");
 
                 entity.Property(e => e.Colors)
                     .HasColumnName("colors")
                     .HasMaxLength(255);
 
-                entity.Property(e => e.Cost)
-                    .HasColumnName("cost")
+                entity.Property(e => e.ColorIdentity)
+                    .HasColumnName("color_identity")
                     .HasMaxLength(255);
 
-                entity.Property(e => e.Name)
-                    .HasColumnName("name")
+                entity.Property(e => e.ManaCost)
+                    .HasColumnName("mana_cost")
                     .HasMaxLength(255);
 
                 entity.Property(e => e.OracleText)
-                    .HasColumnName("oracle_text")
-                    .HasMaxLength(255);
+                    .HasColumnName("oracle_text");
 
                 entity.Property(e => e.Power)
                     .HasColumnName("power")
-                    .HasMaxLength(255);
-
-                entity.Property(e => e.SubTypes)
-                    .HasColumnName("sub_types")
                     .HasMaxLength(255);
 
                 entity.Property(e => e.Toughness)
                     .HasColumnName("toughness")
                     .HasMaxLength(255);
 
+                entity.Property(e => e.Toughness)
+                    .HasColumnName("loyalty")
+                    .HasMaxLength(255);
+
                 entity.Property(e => e.Types)
                     .HasColumnName("types")
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.Subtypes)
+                    .HasColumnName("subtypes")
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.EdhrecRank)
+                    .HasColumnName("edhrec_rank");
+
+                entity.Property(e => e.Reserved)
+                    .HasColumnName("reserved");
+
+                entity.Property(e => e.CommanderLegality)
+                    .HasColumnName("commander_legality")
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.StandardLegality)
+                    .HasColumnName("standard_legality")
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.BrawlLegality)
+                    .HasColumnName("brawl_legality")
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.PioneerLegality)
+                    .HasColumnName("pioneer_legality")
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.ModernLegality)
+                    .HasColumnName("modern_legality")
                     .HasMaxLength(255);
             });
 
@@ -91,15 +124,14 @@ namespace BigDeckPlays.DAL.db
                 entity.ToTable("card_face", "dbo");
 
                 entity.HasIndex(e => e.Name)
-                    .HasName("card_face_name_key")
-                    .IsUnique();
+                .HasName("card_face_name_key");
 
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
                     .HasColumnType("UUID");
 
-                entity.Property(e => e.Cost)
-                    .HasColumnName("cost")
+                entity.Property(e => e.ManaCost)
+                    .HasColumnName("mana_cost")
                     .HasMaxLength(255);
 
                 entity.Property(e => e.Name)
@@ -107,8 +139,7 @@ namespace BigDeckPlays.DAL.db
                     .HasMaxLength(255);
 
                 entity.Property(e => e.OracleText)
-                    .HasColumnName("oracle_text")
-                    .HasMaxLength(255);
+                    .HasColumnName("oracle_text");
 
                 entity.Property(e => e.Power)
                     .HasColumnName("power")
@@ -340,6 +371,9 @@ namespace BigDeckPlays.DAL.db
 
                 entity.Property(e => e.FoilOnly)
                     .HasColumnName("foil_only");
+
+                entity.Property(e => e.Completed)
+                    .HasColumnName("completed");
             });
 
             modelBuilder.Entity<Tag>(entity =>

@@ -3,15 +3,17 @@ using System;
 using BigDeckPlays.DAL.db;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace BigDeckPlays.DAL.db.Migrations
 {
     [DbContext(typeof(BigDeckPlaysContext))]
-    partial class BigDeckPlaysContextModelSnapshot : ModelSnapshot
+    [Migration("20200526164311_ChangesOracleIdToId")]
+    partial class ChangesOracleIdToId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -171,6 +173,7 @@ namespace BigDeckPlays.DAL.db.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("Name")
+                        .IsUnique()
                         .HasName("card_face_name_key");
 
                     b.HasIndex("ParentId");
@@ -391,10 +394,6 @@ namespace BigDeckPlays.DAL.db.Migrations
                         .HasColumnName("code")
                         .HasColumnType("character varying(255)")
                         .HasMaxLength(255);
-
-                    b.Property<bool>("Completed")
-                        .HasColumnName("completed")
-                        .HasColumnType("boolean");
 
                     b.Property<bool>("FoilOnly")
                         .HasColumnName("foil_only")

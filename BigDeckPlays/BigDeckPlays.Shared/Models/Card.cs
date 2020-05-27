@@ -12,10 +12,10 @@ namespace BigDeckPlays.Shared.Models
             Types = new List<string>();
             Subtypes = new List<string>();
             Faces = new List<CardFace>();
+            Sets = new List<Set>();
         }
         
         public Guid Id { get; set; }
-        public Guid OracleId { get; set; }
         public string Name { get; set; }
         public decimal Cmc { get; set; }
         public List<char> Colors { get; set; }
@@ -33,8 +33,10 @@ namespace BigDeckPlays.Shared.Models
         public string StandardLegality { get; set; }
         public string ModernLegality { get; set; }
         public string PioneerLegality { get; set; }
+        public string BrawlLegality { get; set; }
 
         public List<CardFace> Faces { get; set; }
+        public List<Set> Sets { get; set; }
 
         public bool Equals(Card other)
         {

@@ -5,6 +5,13 @@ namespace BigDeckPlays.DAL.Models
 {
     public class ApiCard
     {
+        public ApiCard()
+        {
+            Colors = new List<char>();
+            Color_Identity = new List<char>();
+            Card_Faces = new List<ApiCardFace>();
+        }
+        
         public Guid Id { get; set; }
         public Guid Oracle_Id { get; set; }
         public string Name { get; set; }

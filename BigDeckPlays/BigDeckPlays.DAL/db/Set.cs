@@ -19,6 +19,7 @@ namespace BigDeckPlays.DAL.db
         public string Block { get; set; }
         public int CardCount { get; set; }
         public bool FoilOnly { get; set; }
+        public bool Completed { get; set; }
 
         public virtual ICollection<CardSet> CardSet { get; set; }
     }

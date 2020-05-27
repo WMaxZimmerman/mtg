@@ -11,7 +11,7 @@ namespace BigDeckPlays.DAL.db
         public Guid Id { get; set; }
         public Guid ParentId { get; set; }
         public string Name { get; set; }
-        public string Cost { get; set; }
+        public string ManaCost { get; set; }
         public string OracleText { get; set; }
         public string Power { get; set; }
         public string Toughness { get; set; }

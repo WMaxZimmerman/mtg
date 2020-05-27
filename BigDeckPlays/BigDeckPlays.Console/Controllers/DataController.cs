@@ -18,5 +18,12 @@ namespace BigDeckPlays.Console.Controllers
             var service = new SyncService();
             service.SyncSets();
         }
+
+        [CliCommand("syncCards", "")]
+        public static void SyncCards()
+        {
+            var service = new SyncService();
+            service.SyncCards();
+        }
     }
 }

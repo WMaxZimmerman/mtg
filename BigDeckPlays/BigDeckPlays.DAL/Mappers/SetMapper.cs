@@ -1,6 +1,7 @@
 using SharedSet = BigDeckPlays.Shared.Models.Set;
 using DbSet = BigDeckPlays.DAL.db.Set;
 using BigDeckPlays.DAL.Models;
+using System.Linq;
 
 namespace BigDeckPlays.DAL.Mappers
 {
@@ -47,7 +48,9 @@ namespace BigDeckPlays.DAL.Mappers
                 ReleasedAt = dbSet.ReleasedAt,
                 BlockCode = dbSet.BlockCode,
                 Block = dbSet.Block,
-                CardCount = dbSet.CardCount
+                CardCount = dbSet.CardCount,
+                Completed = dbSet.Completed,
+                Cards = dbSet.CardSet.Select(cs => CardMapper.DbToShared(cs.Card))
             };
         }
 
